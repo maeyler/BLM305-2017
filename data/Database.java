@@ -14,7 +14,7 @@ class Database {
             byte[] ba = new byte[in.available()];
             in.read(ba); in.close(); 
             String[] sa = new String(ba).split(LINE_SEP);
-            System.out.printf("%s satýr okundu %n", sa.length);
+            System.out.printf("%s satir okundu %n", sa.length);
             for (String s : sa) { readLine(s); }
         } catch (IOException x) {
             System.out.println(x);
@@ -45,10 +45,7 @@ class Database {
             System.out.printf(f, s.id, s.name, s.gpa, s.courses);
         }
     }
-    public void printStudent(int k) {
-        printStudent(findFast(k));
-    }
-    public void printCourse(String code) { //sýnavda sorulmadý
+    public void printCourse(String code) { //sinavda sorulmadi
         code = code.toUpperCase();
         System.out.print(code+": [ ");
         for (Student s : data)
@@ -61,7 +58,7 @@ class Database {
         for (Student s : data)
             set.addAll(s.courses);
         if (list) System.out.println(set); 
-        else System.out.println(set.size());
+        System.out.println(set.size()+" ders");
     }
     public void printStudents(int n) {
         Student[] a = data.toArray(new Student[0]); //Q9
@@ -71,21 +68,21 @@ class Database {
         }
     }
     public void doQuestions() {
-        System.out.println("Q1. Ayþe Kaya için bir kayýt oluþturun");
-        Student s = new Student(1234, "Ayþe Kaya", 2.05f);
+        System.out.println("Q1. Ayse Kaya icin bir kayit olusturun");
+        Student s = new Student(1234, "Ayse Kaya", 2.05f);
         s.addCourse("BLM 401"); s.addCourse("Math 254");
         printStudent(s); 
-        System.out.println("Q3. Okulda "+data.size()+" öðrenci var");
-        System.out.println("Q5. Numarasý verilen bir öðrenciyi bulun");
-        printStudent(214001771);
-        System.out.print("Q6. Açýlan ders sayýsý: ");
+        System.out.println("Q3. Okulda "+data.size()+" ogrenci var");
+        System.out.println("Q5. Numarasi verilen bir ogrenciyi bulun");
+        printStudent(findFast(214001771));
+        System.out.print("Q6. Acilan ders sayisi: ");
         printCourses(false);  
         System.out.print("Q7. HashSet h.size(): ");
         Set<Student> h = new HashSet<>(data);
         System.out.println(h.size());
-        System.out.println("Qx. Bir dersi alan öðrenci isimleri");
+        System.out.println("Q8. Bir dersi alan ogrenci isimleri");
         printCourse("math 206"); 
-        System.out.println("Q10. Rastgele 5 öðrencinin listesi");
+        System.out.println("Q10. Rastgele 5 ogrencinin listesi");
         printStudents(5);
     }
     
