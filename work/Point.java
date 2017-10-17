@@ -1,11 +1,19 @@
 class Point {
-    int x, y;
+    int x, y; String str;
     static Rectangle a;
     public Point(int a, int b) {
         x = a; y = b;
+        str = "("+x+","+y+")";
+    }
+    public int hashCode() {
+        return str.hashCode();
+    }
+    public boolean equals(Object q) {
+        Point p = (Point)q;
+        return str.equals(p.str);
     }
     public String toString() {
-        return "("+x+","+y+")";
+        return str;
     }
     public static void main(String[] args) {
         Point p = new Point(3, 4);
