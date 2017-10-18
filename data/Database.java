@@ -13,7 +13,8 @@ class Database {
             InputStream in = new FileInputStream(f);
             byte[] ba = new byte[in.available()];
             in.read(ba); in.close(); 
-            String[] sa = new String(ba).split(LINE_SEP);
+            String str = new String(ba, "Cp1254");
+            String[] sa = str.split(LINE_SEP);
             System.out.printf("%s satir okundu %n", sa.length);
             for (String s : sa) { readLine(s); }
         } catch (IOException x) {
