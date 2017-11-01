@@ -1,6 +1,6 @@
 public class Selam implements Runnable {
-    static final int COUNT = 10;
-    static final int DELAY = 1000;
+    static final int COUNT = 20;
+    static final int DELAY = 5000;
     String str;
     public Selam(String s) {
         str = s;
@@ -22,5 +22,6 @@ public class Selam implements Runnable {
         test("Hi");
         test("Hello");
         test("Selam");
+        
     }
 }

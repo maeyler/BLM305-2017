@@ -1,6 +1,6 @@
 package quote;
 
-public class SmallSimple implements Quotation {
+public class test implements Quotation {
     public int year() {
         return 1973;
     }
