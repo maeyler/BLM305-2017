@@ -30,6 +30,7 @@ class AppBook implements Runnable {
     public void run() { //reports the items on current date, waits for 24 hours
         while (n > 0) {
             report();
+            System.out.printf("%s%n", thd.getState());
             try { //why try?  ...
                 Thread.sleep(delay);
             } catch (Exception e) {
