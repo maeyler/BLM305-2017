@@ -1,11 +1,11 @@
 package quote;
 
-public class GaryVee implements Quotation {
+public class EnesKamilYÄ±lmaz implements Quotation {
     public int year() {
         return 2015;
     }
     public String text() {
-        return "“We only get to play this game one time. We have one life.”";
+        return "â€œWe only get to play this game one time. We have one life.â€";
     }
     public String author() {
         return "Gary Vaynerchuk";
