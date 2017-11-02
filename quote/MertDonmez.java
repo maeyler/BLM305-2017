@@ -6,7 +6,7 @@ public class MertDonmez implements Quotation {
         return 2017;
     }
     public String text() {
-        return "İnsan düşünmek, inanmak daha da önemlisi sevmek için dünyaya gelmiştir.";
+        return "Insan dÃ¼sÃ¼nmek, inanmak daha da Ã¶nemlisi sevmek icin dÃ¼nyaya gelmistir.";
     }
     public String author() {
         return "J.J. Ronsein";
