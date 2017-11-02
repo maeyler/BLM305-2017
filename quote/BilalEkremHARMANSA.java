@@ -2,7 +2,7 @@ package quote;
 
 public class BilalEkremHARMANSA implements Quotation {
     public int year() {
-        return 804-878;
+        return 850;
     }
     public String text() {
         return "Aramakla bulunmaz; lakin bulanlar arayanlardır";
