@@ -3,7 +3,7 @@
 
 public class MertDonmez implements Quotation {
     public int year() {
-        return 2017;
+        return 1883;
     }
     public String text() {
         return "Insan düsünmek, inanmak daha da önemlisi sevmek icin dünyaya gelmistir.";
