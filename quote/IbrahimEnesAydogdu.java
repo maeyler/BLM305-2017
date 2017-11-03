@@ -5,7 +5,7 @@ public class IbrahimEnesAydogdu implements Quotation {
         return 1453;
     }
     public String text() {
-        return "İmkânın sınırını görmek için imkansızı denemek lazım.";
+        return "Imkanin sinirini gormek icin imkansizi denemek lazim.";
     }
     public String author() {
         return "Fatih Sultan Mehmet Han";
