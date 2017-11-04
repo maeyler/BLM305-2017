@@ -2,6 +2,7 @@ package quote;
 
 import java.util.*;
 import java.io.File;
+import java.net.URI;
 import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
@@ -15,6 +16,7 @@ public class GUI implements ActionListener {
     final JTextArea txt = new JTextArea("JTextArea");
     final JTextField ref = new JTextField("JTextField");
     final JComboBox<String> menu;
+    final JButton open = new JButton("Open");
 
     static final int 
         RESOLUTION = Toolkit.getDefaultToolkit().getScreenResolution(); 
@@ -39,8 +41,6 @@ public class GUI implements ActionListener {
         pan.setBorder(new javax.swing.border.EmptyBorder(GAP, GAP, GAP, GAP));
         pan.setBackground(COLOR);
 
-        pan.add(topPanel(), "South");
-
         txt.setFont(LARGE);
         txt.setEditable(false);
         txt.setRows(5);
@@ -49,13 +49,9 @@ public class GUI implements ActionListener {
         txt.setLineWrap(true);
         txt.setDragEnabled(true);
         pan.add(new JScrollPane(txt), "Center");
-
-        ref.setFont(SMALL);
-        ref.setEditable(false);
-        ref.setColumns(35);
-        ref.setDragEnabled(true);
-        pan.add(ref, "North");
-
+        pan.add(topPanel(), "North");
+        pan.add(botPanel(), "South");
+        
         pan.setToolTipText("A project realized collectively by the class");
         menu.setToolTipText("Quotation classes");
         who.setToolTipText("author()+year()");
@@ -69,22 +65,39 @@ public class GUI implements ActionListener {
         frm.setVisible(true);
     }
     JPanel topPanel() {
-        JPanel top = new JPanel();
-        top.setLayout(new BoxLayout(top, BoxLayout.X_AXIS));
-        top.setBackground(COLOR);
+        JPanel p = new JPanel();
+        p.setLayout(new BoxLayout(p, BoxLayout.X_AXIS));
+        p.setBackground(COLOR);
+        
+        ref.setFont(SMALL);
+        ref.setEditable(false);
+        ref.setColumns(35);
+        ref.setDragEnabled(true);
+        p.add(ref);
+        p.add(Box.createHorizontalGlue());
+        
+        open.addActionListener(this);
+        p.add(open);
+        
+        return p;
+    }
+    JPanel botPanel() {
+        JPanel p = new JPanel();
+        p.setLayout(new BoxLayout(p, BoxLayout.X_AXIS));
+        p.setBackground(COLOR);
         
         //menu.setFont(BOLD);
         menu.addActionListener(this);
-        top.add(menu);
+        p.add(menu);
         
-        top.add(Box.createHorizontalStrut(scaled(50)));
-        top.add(Box.createHorizontalGlue());
+        p.add(Box.createHorizontalStrut(scaled(50)));
+        p.add(Box.createHorizontalGlue());
         
         who.setFont(BOLD);
         who.setForeground(Color.black);
-        top.add(who);
+        p.add(who);
         
-        return top;
+        return p;
     }
     boolean tryDir(String d) {
         ClassLoader L = getClass().getClassLoader();
@@ -111,8 +124,8 @@ public class GUI implements ActionListener {
     public String message() { return msg.text(); }
     public void setMessage(Quotation q) {
         msg = q; 
-        who.setText(q.author()+" "+q.year()); 
-        txt.setText(q.text()); 
+        who.setText(toUTF(q.author())+" "+q.year());
+        txt.setText(toUTF(q.text()));
         ref.setText(q.reference()); 
     }
     public void setMessage(int i) {
@@ -121,9 +134,26 @@ public class GUI implements ActionListener {
         setMessage(Q.get(m));
     }
     public void actionPerformed(ActionEvent e) {
-        setMessage(menu.getSelectedIndex());
+        if (e.getActionCommand().equals("Open"))
+             openBrowser(ref.getText());
+        else setMessage(menu.getSelectedIndex());
     }
 
+    public static void openBrowser(String u) {
+        try {
+            Desktop.getDesktop().browse(new URI(u));
+        } catch(Exception e) { //URISyntaxException IOException
+            System.err.println(e);
+        }
+    }
+    public static String toUTF(String s) { 
+        try {
+            byte[] ba = s.getBytes();
+            return new String(ba, "UTF-8"); 
+        } catch(Exception e) { //UnsupportedEncodingException
+            return s;
+        }
+    }
     public static int scaled(int k) { return Math.round(k*RES_RATIO); }
     public static void main(String[] args) { new GUI(); }
 }
