@@ -8,7 +8,7 @@ public class Selimtural implements Quotation {
         return "Akıllı kimsenin lisanı kalbindedir. Düşünerek söyler";
     }
     public String author() {
-        return “Hz.Ali(r.a.)”;
+        return "Hz.Ali(r.a.)";
     }
     public String reference() {
         return "https://www.cokbilgi.com/yazi/ozlu-sozler-1-anlamli-ve-ogretici-sozler/";

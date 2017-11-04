@@ -1,11 +1,11 @@
-package ılerigithub;
+package quote;
 
 public class OmerYazici implements Quotation {
     public int year() {
         return 1950;
     }
     public String text() {
-        return "Ulu cɑmlɑr firtinɑli diyɑrlɑrdɑ yetisir.\n";
+        return "Ulu çɑmlɑr fırtınalı diyɑrlɑrdɑ yetişir.\n";
     }
     public String author() {
         return "Cemil Meric";
