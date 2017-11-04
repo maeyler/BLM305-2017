@@ -5,7 +5,7 @@ public class EnesKamilYilmaz implements Quotation {
         return 2015;
     }
     public String text() {
-        return "“We only get to play this game one time. We have one life.”";
+        return "We only get to play this game one time. We have one life.";
     }
     public String author() {
         return "Gary Vaynerchuk";
