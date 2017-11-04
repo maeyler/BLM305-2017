@@ -1,8 +1,8 @@
 package quote;
 
-public class MAEyler implements Quotation {
+public class EmrahTema implements Quotation {
     public int year() {
-        return 1925;
+        return 1924;
     }
     public String text() {
         return "Bir millet, savaş meydanlarında ne kadar parlak zaferler elde ederse etsin, o zaferlerin yaşayacak sonuçlar vermesi ancak irfan ordusuyla kaimdir.";
