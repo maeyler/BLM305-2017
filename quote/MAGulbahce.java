@@ -5,7 +5,7 @@ public class MAGulbahce implements Quotation {
         return 1530;
     }
     public String text() {
-        return  "Dünyada her ne var ise kaynağı aşktır; ilim ise koca bir dedikodu.";
+        return  "DÃ¼nyada her ne var ise kaynaÄŸÄ± aÅŸktÄ±r; ilim ise koca bir dedikodu.";
     }
     public String author() {
         return "Fuzuli";
