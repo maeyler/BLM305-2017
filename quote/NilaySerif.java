@@ -5,8 +5,7 @@ public class NilaySerif implements Quotation {
         return 0;
     }
     public String text() {
-	String text = new String("Her şeyin ölçüsü insandır"," "Cp1254");
-        return text;
+        return "Her ÅŸeyin Ã¶lÃ§Ã¼sÃ¼ insandÄ±r";
     }
     public String author() {
         return "Pythagoras";
