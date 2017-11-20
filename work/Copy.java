@@ -4,16 +4,22 @@ import java.io.*;
 import java.net.URL;
 
 class Copy  {   //any file -- text or binary, local or remote
+    final static byte[] buf = new byte[64*1024];  //common buffer
     public static int copy(InputStream in, String name) throws IOException {
-        int n = in.available(); 
-        byte[] buf = new byte[n];
-        n = in.read(buf); in.close();
+        //int n = in.available();            This simple approach is
+        //byte[] buf = new byte[n];          not good for remote URL's:
+        //n = in.read(buf); in.close();      multiple reads are needed
+        //stackoverflow.com/questions/1316360/reading-a-remote-file-using-java
         
         File g = new File(name);
         //if (g.exists()) ask user before deleting g
         FileOutputStream out = new FileOutputStream(g);
-        out.write(buf, 0, n); out.close();
         
+        int n = 0;  //total number of bytes
+        int k;  //number of bytes in each read()
+        while ((k = in.read(buf)) > 0) {
+            out.write(buf, 0, k); n = n+k;
+        } out.close();        
         System.out.println(n+" bytes copied");
         return n;
     }
