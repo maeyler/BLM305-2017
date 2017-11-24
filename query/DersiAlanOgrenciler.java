@@ -3,7 +3,7 @@ package query;
 public class DersiAlanOgrenciler implements Query {
     public String defaultValue() { return "BPP 101"; }
     public String question() {
-        return "Verilen id'ye sahip dersleri alan öðrenciler";
+        return "Verilen id'ye sahip dersleri alan ogrenciler";
     }
     public String doQuery(Database db, String ders) {
         if (ders == null) ders = defaultValue();
@@ -18,5 +18,5 @@ public class DersiAlanOgrenciler implements Query {
         System.out.println(n+" students: "+ders);
         return out;
     }
-    public String author() { return "Nilay Þerif"; }
+    public String author() { return "Nilay Serif"; }
 }
