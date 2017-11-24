@@ -34,5 +34,5 @@ public class getTime implements Query{
         return out;
 
     }
-    public String author() { return "Hatice Kübra DAnýþ"; }
+    public String author() { return "Hatice Kubra Danis"; }
 }
