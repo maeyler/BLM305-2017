@@ -1,9 +1,9 @@
 package query;
 
-public class SýnýfaGoreDersBulma implements Query {
+public class SinifaGoreDersBulma implements Query {
     public String defaultValue() { return "GG307"; }
     public String question() {
-        return "Girilen Sýnýfta Ýþlenen Dersler";
+        return "Girilen Sinifta Islenen Dersler";
     }
     public String doQuery(Database db, String roomName)
     {
@@ -18,10 +18,10 @@ public class SýnýfaGoreDersBulma implements Query {
             }
         }
         if(out==null)
-            return "Böyle bir sýnýf yok";
+            return "BÃ¶yle bir sinif yok";
         else
             return out;
 
     }
-    public String author() { return "Muhammet Ali Gülbahçe"; }
+    public String author() { return "Muhammet Ali GÃ¼lbahÃ§e"; }
 }
