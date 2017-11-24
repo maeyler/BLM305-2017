@@ -6,7 +6,7 @@ public class ListStudentsGivenGPA implements Query{
     
     public String doQuery(Database db, String gno) {
         if (gno == null) gno = defaultValue();
-	String out = gno+" ortalamalý ogrenciler \n";
+	String out = gno+" ortalamali ogrenciler \n";
         for (Student s : db.std.values()) {
 	    if (s.gpa == Float.parseFloat(gno)) {
                 out += s.id+"  "+s.name+"\n"; 
@@ -14,5 +14,5 @@ public class ListStudentsGivenGPA implements Query{
 	}
 	return out;
     }
-    public String author() { return "Ahmet Fýrat ÞÜPHESÝZ"; }
+    public String author() { return "Ahmet Firat"; }
 }
