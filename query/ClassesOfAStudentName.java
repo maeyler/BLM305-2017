@@ -24,5 +24,5 @@ public class ClassesOfAStudentName implements Query {
         courses = null; 
         return result; 
     } 
-    public String author() { return "Salim Şahin"; } 
+    public String author() { return "Salim Sahin"; } 
 } 

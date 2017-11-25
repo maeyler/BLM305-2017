@@ -27,7 +27,7 @@ public class getTime implements Query{
                      n++;
                      break;
                 }
-                System.out.println(name);
+                //System.out.println(name);
             
            
         }

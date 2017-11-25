@@ -38,8 +38,8 @@ public class FindMinId  implements Query {
         
             if (s.id == min) {
                out += s.id+"  "; 
+               System.out.println(s.name + " " + s.id + " " );
             } 
-            System.out.println(s.name + " " + s.id + " " );
         }return out;
     }
 
