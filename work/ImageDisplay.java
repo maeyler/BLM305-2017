@@ -1,36 +1,50 @@
 package work;
 
-import java.io.File;
 import java.awt.Graphics;
 import java.awt.image.BufferedImage;
-import javax.swing.JFrame;
 import javax.swing.JPanel;
+
+import java.awt.Dimension;
+import java.awt.GridLayout;
+import java.io.File;
+import java.io.IOException;
 import javax.imageio.ImageIO;
+import javax.swing.JFrame;
 
+//Sample program by Muhammet Alkan -- Dec 2017
 class ImageDisplay extends JPanel {
-    public static BufferedImage img;
+
+    BufferedImage image;
+
+    @Override
     public void paint(Graphics g) {
-        g.drawImage(img, 0, 0, null);
+        super.paint(g);
+        g.drawImage(image, 0, 0, null);
+    }
+    public void setImage(BufferedImage i) {
+        this.image = i;
     }
 
-    public static JFrame newFrame(String t, JPanel p, int x, int y, int w, int h) {
-        JFrame f = new JFrame(t); f.setContentPane(p); 
-        f.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-        f.setBounds(x, y, w, h);  //f.pack(); 
-        f.setVisible(true); return f;
-    }
-    public static void main(String[] args) throws Exception {
-        File file = new File("images", "Kedi.png");
-        img = ImageIO.read(file); //may throw IOException 
-        int W = img.getWidth();
-        int H = img.getHeight();
-        System.out.printf("W=%s H=%s %n", W, H);
-        JPanel p1 = new ImageDisplay();
-        newFrame("First solution", p1, 80, 50, W, H);
-        JPanel p2 = new JPanel();
-        newFrame("Second solution", p2, 330, 50, W, H);
-        Thread.sleep(1000); //may throw InterruptedException 
-        Graphics g = p2.getGraphics();
-        g.drawImage(img, 0, 0, null);
+    public static void main(String[] args) {
+        File file1 = new File("images", "Kedi.png");
+        File file2 = new File("images", "examples.PNG");
+
+        JFrame f = new JFrame();
+        f.setDefaultCloseOperation(f.DISPOSE_ON_CLOSE);
+        f.setMinimumSize(new Dimension(1000, 500));
+
+        f.setLayout(new GridLayout(1, 2));
+
+        ImageDisplay p1 = new ImageDisplay();
+        ImageDisplay p2 = new ImageDisplay();
+
+        try {
+            p1.setImage(ImageIO.read(file1));
+            p2.setImage(ImageIO.read(file2));
+            f.add(p1); f.add(p2);
+            f.pack(); f.setVisible(true);
+        } catch (IOException ex) {
+            System.out.println(" hata !! " + ex);
+        }
     }
 }
